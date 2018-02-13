@@ -11,27 +11,29 @@
     <section class="row">
         <div class="small-6 columns">
             <h1 class="text-center">YOU</h1>
-            <div class="healthbar">
-                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
+            <div class="healthbar" style="position: relative">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="your_health_style">
 
                 </div>
+                <span class="health-text" >{{your_health}}% </span>
             </div>
         </div>
         <div class="small-6 columns">
             <h1 class="text-center">MONSTER</h1>
-            <div class="healthbar">
-                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
+            <div class="healthbar" style="position: relative;">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="enemy_health_style">
 
                 </div>
+                <span class="health-text" >{{enemy_health}}%</span>
             </div>
         </div>
     </section>
-    <section class="row controls">
+    <section class="row controls" v-if="game_off">
         <div class="small-12 columns">
-            <button id="start-game">START NEW GAME</button>
+            <button id="start-game" @click="game_off = false">START NEW GAME</button>
         </div>
     </section>
-    <section class="row controls">
+    <section class="row controls" v-else>
         <div class="small-12 columns">
             <button id="attack">ATTACK</button>
             <button id="special-attack">SPECIAL ATTACK</button>
@@ -49,5 +51,6 @@
         </div>
     </section>
 </div>
+<script src="js/app.js" > </script>
 </body>
 </html>
