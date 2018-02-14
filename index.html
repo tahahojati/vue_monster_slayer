@@ -28,23 +28,24 @@
             </div>
         </div>
     </section>
-    <section class="row controls" v-if="game_off">
+    <section class="row controls" v-if="game_off" >
         <div class="small-12 columns">
             <button id="start-game" @click="game_off = false">START NEW GAME</button>
         </div>
     </section>
     <section class="row controls" v-else>
         <div class="small-12 columns">
-            <button id="attack">ATTACK</button>
-            <button id="special-attack">SPECIAL ATTACK</button>
-            <button id="heal">HEAL</button>
-            <button id="give-up">GIVE UP</button>
+            <button id="attack" @click="attack()" :disabled="!activate_ui">ATTACK</button>
+            <button id="special-attack" @click="attack(35)" :disabled="!activate_ui">SPECIAL ATTACK</button>
+            <button id="heal" @click="heal()" :disabled="!activate_ui">HEAL</button>
+            <button id="give-up" @click="give_up()" :disabled="!activate_ui">GIVE UP</button>
         </div>
     </section>
-    <section class="row log">
+    <section class="row log" v-if="show_log">
         <div class="small-12 columns">
             <ul>
-                <li>
+                <li v-for="log_row in log" :class="{'player-turn': log_row.turn == 1, 'monster-turn': log_row.turn==0}" >
+                    {{log_txt(log_row)}}
 
                 </li>
             </ul>

@@ -92,4 +92,7 @@ button {
 #give-up:hover {
     background-color: #c7c7c7;
 }
-.health-text{position: absolute; width: 100%; text-align: center; top:10px}
+.health-text{position: absolute; width: 100%; text-align: center; top:10px; color: white;}
+.disable-ui button{
+    cursor:not-allowed;
+}
